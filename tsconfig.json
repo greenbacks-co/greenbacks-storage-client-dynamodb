@@ -2,6 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "declaration": true,
+    "esModuleInterop": true,
     "module": "esnext",
     "outDir": "./dist",
     "paths": {
