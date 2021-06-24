@@ -1,0 +1,36 @@
+{
+  "name": "greenbacks-storage-client-dynamodb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "lint": "prettier --check src && eslint src",
+    "lint-fix": "prettier --write src && eslint src --fix",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/greenbacks-co/greenbacks-storage-client-dynamodb.git"
+  },
+  "author": "Taylor Laekeman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/greenbacks-co/greenbacks-storage-client-dynamodb/issues"
+  },
+  "homepage": "https://github.com/greenbacks-co/greenbacks-storage-client-dynamodb#readme",
+  "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "@typescript-eslint/eslint-plugin": "^4.26.1",
+    "@typescript-eslint/parser": "^4.26.1",
+    "eslint": "^7.28.0",
+    "eslint-config-prettier": "^8.3.0",
+    "jest": "^27.0.4",
+    "prettier": "2.3.0",
+    "ts-jest": "^27.0.3",
+    "ts-loader": "^9.2.3",
+    "typescript": "^4.3.2",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.2"
+  }
+}

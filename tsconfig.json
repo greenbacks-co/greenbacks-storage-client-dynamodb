@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "declaration": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "outDir": "./dist",
+    "paths": {
+      "*": ["./src/*", "./node_modules/*"]
+    },
+    "target": "es6"
+  },
+  "include": ["src/**/*"]
+}
