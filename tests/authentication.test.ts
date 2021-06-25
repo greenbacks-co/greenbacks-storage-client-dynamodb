@@ -1,5 +1,3 @@
-import { DynamoDB } from '@aws-sdk/client-dynamodb';
-
 import { AuthenticationError, getClient } from 'dynamoClient';
 import settings from 'settings';
 
