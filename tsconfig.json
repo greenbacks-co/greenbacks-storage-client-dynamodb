@@ -4,6 +4,7 @@
     "declaration": true,
     "esModuleInterop": true,
     "module": "esnext",
+    "moduleResolution": "node",
     "outDir": "./dist",
     "paths": {
       "*": ["./src/*", "./node_modules/*"]
