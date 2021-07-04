@@ -7,7 +7,7 @@
     "build": "webpack",
     "lint": "prettier --check src && eslint src",
     "lint-fix": "prettier --write src && eslint src --fix",
-    "test": "jest"
+    "test": "jest tests"
   },
   "repository": {
     "type": "git",

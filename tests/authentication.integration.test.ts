@@ -1,4 +1,5 @@
-import { AuthenticationError, getClient } from 'dynamoClient';
+import { getClient } from 'dynamoClient';
+import { AuthenticationError } from 'errors';
 import settings from 'settings';
 
 const getCredentials = () => ({

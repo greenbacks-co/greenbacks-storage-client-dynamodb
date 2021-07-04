@@ -1,5 +1,7 @@
 import DynamoDB, { DocumentClient } from 'aws-sdk/clients/dynamodb';
 
+import { AuthenticationError } from 'errors';
+
 const AUTHENTICATION_ERRORS = [
   'UnrecognizedClientException',
   'InvalidSignatureException',
@@ -58,6 +60,10 @@ class BaseSdkWrapper {
   documentClient: DocumentClient;
 }
 
+export interface TableClient {
+  createTable: (configuration: any, callback: (error: any) => void) => void;
+}
+
 class SdkWrapper extends BaseSdkWrapper {
   constructor({ client, documentClient }) {
     super();
@@ -65,5 +71,3 @@ class SdkWrapper extends BaseSdkWrapper {
     this.documentClient = documentClient;
   }
 }
-
-export class AuthenticationError extends Error {}
