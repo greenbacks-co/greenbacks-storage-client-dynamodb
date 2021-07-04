@@ -9,6 +9,14 @@ export interface DynamoError {
   name: string;
 }
 
+export const isAuthenticationError = (error: DynamoError): boolean =>
+  AUTHENTICATION_ERRORS.includes(error.name);
+
+const AUTHENTICATION_ERRORS = [
+  'UnrecognizedClientException',
+  'InvalidSignatureException',
+];
+
 export const isDuplicateTableError = (error: DynamoError): boolean =>
   error.name === 'ResourceInUseException' &&
   (error.message.startsWith('Table already exists') ||

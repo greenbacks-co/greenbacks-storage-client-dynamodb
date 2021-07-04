@@ -1,11 +1,6 @@
 import DynamoDB, { DocumentClient } from 'aws-sdk/clients/dynamodb';
 
-import { AuthenticationError } from 'errors';
-
-const AUTHENTICATION_ERRORS = [
-  'UnrecognizedClientException',
-  'InvalidSignatureException',
-];
+import { AuthenticationError, isAuthenticationError } from 'errors';
 
 class DynamoClient {
   sdkWrapper: BaseSdkWrapper;
@@ -17,7 +12,7 @@ class DynamoClient {
   async validateAuthentication() {
     return new Promise((resolve, reject) => {
       this.sdkWrapper.client.listTables({}, (error) => {
-        if (error && AUTHENTICATION_ERRORS.includes(error.name)) {
+        if (error && isAuthenticationError(error)) {
           reject(new AuthenticationError());
           return;
         }
