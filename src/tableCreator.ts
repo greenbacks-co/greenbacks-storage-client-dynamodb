@@ -1,18 +1,17 @@
-import type { TableClient } from 'dynamoClient';
 import {
   DuplicateTableError,
   DynamoError,
   isDuplicateTableError,
 } from 'errors';
 
-class TableCreator {
-  readonly tableClient: TableClient;
+class TableCreator implements ITableCreator {
+  readonly tableClient: ITableClient;
 
   constructor({ tableClient }: ConstructorInput) {
     this.tableClient = tableClient;
   }
 
-  async createTable(input: CreateTableInput): Promise<void> {
+  async createTable(input: CreateTableInput): CreateTableResult {
     const configuration = {
       AttributeDefinitions: buildAttributeDefinitions(input),
       BillingMode: 'PAY_PER_REQUEST',
@@ -34,8 +33,12 @@ class TableCreator {
   }
 }
 
+export interface ITableCreator {
+  createTable: (input: CreateTableInput) => CreateTableResult;
+}
+
 interface ConstructorInput {
-  tableClient: TableClient;
+  tableClient: ITableClient;
 }
 
 export interface CreateTableInput {
@@ -51,6 +54,8 @@ export interface CreateTableInput {
   };
   name: string;
 }
+
+export type CreateTableResult = Promise<void>;
 
 const buildAttributeDefinitions = ({
   key: { partition, sort },

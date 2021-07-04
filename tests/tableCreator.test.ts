@@ -1,8 +1,8 @@
 import { DuplicateTableError } from 'errors';
 import TableCreator, { CreateTableInput } from 'tableCreator';
 
-class SdkStub {
-  calls: Call[];
+class SdkStub implements ITableClient {
+  calls: SdkCreateTableInput[];
   shouldThrowCreatingTableError: boolean;
   shouldThrowExistingTableError: boolean;
 
@@ -33,13 +33,8 @@ class SdkStub {
     }
     callback();
   }
-}
 
-interface Call {
-  AttributeDefinitions: { AttributeName: string; AttributeType: string }[];
-  BillingMode: string;
-  KeySchema: { AttributeName: string; KeyType: string }[];
-  TableName: string;
+  async listTables(configuration, callback) {}
 }
 
 const getInput = (): CreateTableInput => ({
