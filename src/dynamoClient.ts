@@ -2,7 +2,7 @@ import DynamoDB, { DocumentClient } from 'aws-sdk/clients/dynamodb';
 
 import { AuthenticationError, isAuthenticationError } from 'errors';
 
-class DynamoClient {
+export class DynamoClient {
   sdkWrapper: BaseSdkWrapper;
 
   constructor({ sdkWrapper }) {
@@ -66,3 +66,5 @@ class SdkWrapper extends BaseSdkWrapper {
     this.documentClient = documentClient;
   }
 }
+
+export default getClient;
