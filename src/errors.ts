@@ -9,6 +9,8 @@ export interface DynamoError {
   name: string;
 }
 
+export class MissingTableError extends ClientError {}
+
 export const isAuthenticationError = (error: DynamoError): boolean =>
   AUTHENTICATION_ERRORS.includes(error.name);
 
