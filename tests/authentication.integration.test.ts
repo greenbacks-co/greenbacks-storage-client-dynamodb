@@ -23,6 +23,7 @@ test('get client with bad secret throws authentication error', async () => {
   }).rejects.toThrow(AuthenticationError);
 });
 
+jest.retryTimes(1);
 test('get client with good credentials does not throw', async () => {
   const credentials = getCredentials();
   const client = await getClient({ credentials });

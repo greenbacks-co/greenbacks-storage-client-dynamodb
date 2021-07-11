@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
+    "check": "npm run lint && npm run test && npm run build",
     "lint": "prettier --check src && eslint src",
     "lint-fix": "prettier --write src && eslint src --fix",
     "test": "jest tests"
