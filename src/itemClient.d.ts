@@ -1,9 +1,13 @@
 interface IItemClient {
-  query: (
-    input: SdkQueryInput,
-    callback: (error: DynamoError, result: SdkQueryResult) => void
-  ) => void;
+  put: SdkFunction<SdkPutInput, SdkPutResult>;
+
+  query: SdkFunction<SdkQueryInput, SdkQueryResult>;
 }
+
+type SdkFunction<Input, Result> = (
+  input: Input,
+  callback: (error: DynamoError, result: Result) => void
+) => void;
 
 type SdkQueryInput = {
   ExpressionAttributeNames: {
@@ -19,3 +23,10 @@ type SdkQueryInput = {
 type SdkQueryResult = {
   Items: Record<string, unknown>[];
 };
+
+type SdkPutInput = {
+  Item: Record<string, unknown>;
+  TableName: string;
+};
+
+type SdkPutResult = Record<string, unknown>;

@@ -13,6 +13,8 @@ class SdkStub implements IItemClient {
     this.shouldThrow = shouldThrow;
   }
 
+  async put(input, callback) {}
+
   async query(input, callback) {
     this.calls.push(input);
     if (this.shouldThrow) {
