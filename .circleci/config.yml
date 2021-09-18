@@ -14,9 +14,14 @@ jobs:
     steps:
       - checkout
       - node/install-packages
-      - run: npm run lint
-      - run: npm run test
-      - run: npm run build
+      - run: npm run check
+
+  publish:
+    executor: node
+    steps:
+      - checkout
+      - node/install-packages
+      - run: npm publish
 
 workflows:
   build-and-test:
@@ -24,3 +29,10 @@ workflows:
       - build-and-test:
           context:
             - dynamo
+          filters:
+            branches:
+              ignore: main
+      - publish:
+          filters:
+            branches:
+              only: main
