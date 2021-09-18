@@ -15,6 +15,7 @@ jobs:
       - checkout
       - node/install-packages
       - run: npm run check
+      - run: npm run registry-login
 
   publish:
     executor: node
