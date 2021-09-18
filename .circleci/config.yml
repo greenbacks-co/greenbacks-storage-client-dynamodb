@@ -16,6 +16,13 @@ jobs:
       - node/install-packages
       - run: npm run check
 
+  publish:
+    executor: node
+    steps:
+      - checkout
+      - node/install-packages
+      - run: npm publish
+
 workflows:
   build-and-test:
     jobs:
@@ -25,3 +32,7 @@ workflows:
           filters:
             branches:
               ignore: main
+      - publish:
+          filters:
+            branches:
+              only: main
