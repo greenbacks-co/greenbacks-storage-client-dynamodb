@@ -8,6 +8,8 @@
     "check": "npm run lint && npm run test && npm run build",
     "lint": "prettier --check src && eslint src",
     "lint-fix": "prettier --write src && eslint src --fix",
+    "preinstall": "npm run registry-login",
+    "registry-login": "aws codeartifact login --tool npm --repository libraries --domain greenbacks --domain-owner 750708961824",
     "test": "jest"
   },
   "repository": {
