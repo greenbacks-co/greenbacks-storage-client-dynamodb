@@ -31,10 +31,13 @@ workflows:
       - build-and-test:
           context:
             - dynamo
+            - aws
           filters:
             branches:
               ignore: main
       - publish:
+          context:
+            - aws
           filters:
             branches:
               only: main
