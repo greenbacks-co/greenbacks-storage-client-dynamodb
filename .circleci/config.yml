@@ -42,3 +42,6 @@ workflows:
       - publish:
           context:
             - aws
+          filters:
+            branches:
+              only: main
