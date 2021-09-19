@@ -15,6 +15,7 @@ jobs:
     steps:
       - checkout
       - aws-cli/setup
+      - run: npm run registry-login
       - node/install-packages
       - run: npm run check
 
