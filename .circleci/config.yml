@@ -23,6 +23,7 @@ jobs:
     executor: node
     steps:
       - checkout
+      - aws-cli/setup
       - run: npm run registry-login
       - node/install-packages
       - run: npm publish
