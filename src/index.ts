@@ -1,1 +1,1 @@
-console.log('test');
+export { DynamoClient as default } from 'dynamoClient';
