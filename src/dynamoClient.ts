@@ -1,5 +1,4 @@
 import DynamoDB from 'aws-sdk/clients/dynamodb';
-// import DynamoDB, { DocumentClient } from 'aws-sdk/clients/dynamodb';
 
 import { AuthenticationError, isAuthenticationError } from 'errors';
 import { IItemReader, ReadItemsInput, ReadItemsResult } from 'itemReader';

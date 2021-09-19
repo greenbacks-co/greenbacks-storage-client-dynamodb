@@ -1,6 +1,7 @@
 version: 2.1
 
 orbs:
+  aws-cli: circleci/aws-cli@2.0
   node: circleci/node@4.1
 
 executors:
@@ -13,6 +14,8 @@ jobs:
     executor: node
     steps:
       - checkout
+      - aws-cli/setup
+      - run: npm run registry-login
       - node/install-packages
       - run: npm run check
 
@@ -20,7 +23,10 @@ jobs:
     executor: node
     steps:
       - checkout
+      - aws-cli/setup
+      - run: npm run registry-login
       - node/install-packages
+      - run: npm run build
       - run: npm publish
 
 workflows:
@@ -29,10 +35,13 @@ workflows:
       - build-and-test:
           context:
             - dynamo
+            - aws
           filters:
             branches:
               ignore: main
       - publish:
+          context:
+            - aws
           filters:
             branches:
               only: main
