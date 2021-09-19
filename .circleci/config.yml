@@ -26,6 +26,7 @@ jobs:
       - aws-cli/setup
       - run: npm run registry-login
       - node/install-packages
+      - run: npm run build
       - run: npm publish
 
 workflows:
