@@ -1,6 +1,7 @@
 version: 2.1
 
 orbs:
+  aws-cli: circleci/aws-cli@2.0
   node: circleci/node@4.1
 
 executors:
@@ -13,9 +14,9 @@ jobs:
     executor: node
     steps:
       - checkout
+      - aws-cli/setup
       - node/install-packages
       - run: npm run check
-      - run: npm run registry-login
 
   publish:
     executor: node
